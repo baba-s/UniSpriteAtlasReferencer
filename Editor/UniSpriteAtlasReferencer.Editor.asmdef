@@ -1,0 +1,17 @@
+{
+    "name": "UniSpriteAtlasReferencer.Editor",
+    "references": [
+        "GUID:bda4492298b224540b1336aea7409909"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
