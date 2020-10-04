@@ -11,8 +11,9 @@ namespace Kogane.Internal
 		//================================================================================
 		// 定数
 		//================================================================================
-		private const bool   DEFAULT_ENABLED_LOG = false;
-		private const string DEFAULT_LOG_FORMAT  = "[UniSpriteAtlasReferencer] シーンの保存にかかった時間：{0} 秒";
+		private static readonly string PACKAGE_NAME        = "UniSpriteAtlasReferencer";
+		private static readonly bool   DEFAULT_ENABLED_LOG = false;
+		private static readonly string DEFAULT_LOG_FORMAT  = $"[{PACKAGE_NAME}] シーンの保存にかかった時間：{0} 秒";
 
 		//================================================================================
 		// 変数(static)
@@ -34,7 +35,7 @@ namespace Kogane.Internal
 		{
 			return CreateSettingsProvider
 			(
-				settingsProviderPath: "Kogane/UnitSpriteAtlasReferencer",
+				settingsProviderPath: $"Kogane/{PACKAGE_NAME}",
 				onGUIExtra: so =>
 				{
 					if ( !GUILayout.Button( "Reset to Default" ) ) return;
