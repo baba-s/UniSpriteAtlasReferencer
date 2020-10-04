@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -6,6 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 namespace Kogane.Internal
 {
@@ -24,13 +26,30 @@ namespace Kogane.Internal
 		/// </summary>
 		static SpriteAtlasReferencerInjector()
 		{
-			EditorSceneManager.sceneSaving += OnSceneSaving;
+			EditorSceneManager.sceneSaving += ( scene, path ) =>
+			{
+				var settings = SpriteAtlasReferencerSettings.GetInstance();
+
+				// 経過時間のログを出力しない場合
+				if ( !settings.EnabledLog )
+				{
+					OnSceneSaving( scene );
+					return;
+				}
+
+				// 経過時間のログを出力する場合
+				var sw = new Stopwatch();
+				sw.Start();
+				OnSceneSaving( scene );
+				sw.Stop();
+				Debug.LogFormat( settings.LogFormat, sw.Elapsed.TotalSeconds );
+			};
 		}
 
 		/// <summary>
 		/// シーンが保存される時に呼び出されます
 		/// </summary>
-		private static void OnSceneSaving( Scene scene, string path )
+		private static void OnSceneSaving( Scene scene )
 		{
 			Inject( scene );
 		}

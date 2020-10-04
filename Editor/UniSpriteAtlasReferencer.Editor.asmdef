@@ -1,7 +1,8 @@
 {
     "name": "UniSpriteAtlasReferencer.Editor",
     "references": [
-        "GUID:bda4492298b224540b1336aea7409909"
+        "GUID:bda4492298b224540b1336aea7409909",
+        "GUID:7b6be2b92e29eb34182d6da0ff1d6add"
     ],
     "includePlatforms": [
         "Editor"
